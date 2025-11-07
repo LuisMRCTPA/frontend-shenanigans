@@ -1,0 +1,259 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+}
+
+:root {
+    --primary-color:#4981ff
+}
+
+.main{
+    width: 100%;
+    background-position: center;
+    background-size: cover;
+    height: 109vh;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    background: #333;
+}
+a {
+    text-decoration: none;
+    color: #333;
+}
+ul{
+    list-style: none;
+}
+#logo {
+    max-width: 100px;
+    max-height: 100px;
+    float: left;
+    border-radius: 10px;
+}
+img {
+    max-width: 100%;
+}
+
+/* navbar */
+
+.navbar {
+    background: #ffffff3d; font-family: 'Times New Roman', Times, serif; padding: 15px;padding-left: 15px;
+    padding: 20px;
+}
+.navdiv{
+    display: flex; align-items: center; justify-content: space-between;
+}
+
+.logo a{
+    font-size: 35px; font-weight: 600; color: white;
+}
+li{
+    list-style: none; display: inline-block;
+}
+li a{
+    color: #fff; font-size: 18px; font-weight: bold; margin-right: 25px;
+}
+button{
+    background-color: #343434; margin-left: 10px; border-radius: 10px; padding: 10px; width: 90px;
+}
+button a{
+    color: #fff; font-weight: bold; font-size: 15px;
+}
+ul li a:hover{
+    color: aquamarine;
+}
+button:hover {
+    background-color: #4313f1;
+    transition: .4s ease;
+}
+
+/* utility classes */
+
+.container {
+max-width: 110px;
+margin: 0 auto;
+padding: 0 15px;
+}
+
+.container-sm {
+max-width: 800px;
+margin: 0 auto;
+padding: 0 15px;
+}
+
+/* button type shiii */
+
+.search{
+    width: 330px;
+    float: left;
+    margin-left: 270px;
+}
+.srch {
+    font-family: 'Times New Roman', Times, serif;
+    width: 200px;
+    height: 40px;
+    background: transparent;
+    border: 1px solid #2892e9;
+    margin-top: 13px;
+    color: #fff;
+    border-right: none;
+    font-size: 16px;
+    float: left;
+    padding: 5px;
+    border-bottom-left-radius: 5px;
+    border-top-left-radius:5px ;
+ }
+
+ .btn {
+    width: 100px;
+    height: 40px;
+    background: #2892e9;
+    border: 2px solid #2892e9;
+    margin-top: 13px;
+    color:#fff;
+    font-size: 15px;
+    border-bottom-right-radius:5px;
+    border-bottom-left-radius:5px ;
+ }
+ .btn:focus {
+    outline: none;
+ }
+ .srch:focus{
+    outline: none;
+ }
+
+:root {
+    --accent-color: #2892e9;
+    --base-color: white;
+    --text-color: black;
+    --input-color: white;    
+}
+*{
+    margin: 0;
+    padding: 0;
+}
+
+html{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 12pt;
+    color: var(--text-color);
+    text-align: center;
+}
+body{
+    min-height: 100vh;
+    background-image: url(../images/pexels-delot-31440965.jpg);
+    background-size: cover;
+    background-position: right;
+    overflow: hidden;
+}
+.wrapper {
+    box-sizing: border-box;
+    background-color: var(--base-color);
+    height: 100vh;
+    width: max(40%, 400px);
+    padding: 10px;
+    border-radius: 0 20px 20px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+h1 {
+    font-size: 3rem;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+form {
+    width: min(400px, 100%);
+    margin-top: 20px;
+    margin-bottom: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+form > div {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+form label{
+    flex-shrink: 0;
+    height: 50px;
+    width: 50px;
+    background-color: var(--accent-color);
+    fill: var(--base-color);
+    color: var(--base-color);
+    border-radius: 10px 0 0 10px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+form input {
+    box-sizing: border-box;
+    flex-grow: 1;
+    flex-shrink: 1;
+    min-width: 0;
+    height: 50px;
+    padding: 1em;
+    font: inherit;
+    border-radius: 0 10px 10px 0;
+    border: 2px solid var(--input-color);
+    background-color: var(--input-color);
+    transition: 0.7s ease;
+}
+form input:hover {
+    border: 2px solid var(--accent-color);
+}
+form input:focus { 
+    outline: none;
+    border-color: var(--text-color);
+}
+div:has(input:focus) > label {
+background-color: var(--text-color);
+}
+form button {
+    margin-top: 10px;
+    border: none;
+    border-radius: 1000px;
+    background-color: var(--accent-color);
+    color: var(--base-color);
+    font: inherit;
+    font-weight: 600px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: 0.7s ease;
+}
+form button:hover {
+    background-color: var(--text-color);
+}
+ form button:focus {
+    outline: none;
+    background-color: var(--text-color);
+ }
+ a {
+    text-decoration: none;
+    color: var(--accent-color);
+}
+a:hover {
+    text-decoration: double;
+}
+@media(max-width:1100px){
+    .wrapper{
+        width: min(600px, 100%);/* this makes it adaptable to mobile devices */
+        border-radius: 0;
+    }
+}
+form div.incorrect label {
+    background-color: red;
+}
+form div.incorrect input {
+    border-color: red;
+}

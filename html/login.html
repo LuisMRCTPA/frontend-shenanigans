@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="/frontend/css/stylish.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="navdiv">
+        <img src="/frontend/images/logo.jpg" alt="logo" id="logo">
+        <div class="logo"><a href="#">Habilidades Blandas</a></div>
+            <div class="menu">
+            <ul>
+                <li> <a href="Index.html">HOME</a></li>
+                <button><a href="/frontend/html/login.html">Login</a></button>
+                <button><a href="/frontend/html/registro.html">Register</a></button>
+            </ul>
+            </div>
+    <div class="search"> <!--required is to set something to be well demanded from someone and disabled allows to disable text or even buttons in order to redirect users-->
+    <input class="srch" type="search" name="" placeholder="Type to text">
+    <a href="#"><button class="btn">Search</button></a>
+    </div>
+    </nav>
+
+    <div class="wrapper">
+        <h1>Log In</h1> 
+        <p id="error-message"></p>
+        <form id="login">
+            <div>
+                <label for="email-input">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M160-160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h640q33 0 56.5 23.5T880-720v480q0 33-23.5 56.5T800-160H160Zm320-280 320-200v-80L480-520 160-720v80l320 200Z"/></svg>
+                </label>
+                <input type="email" name="email" id="email-input" placeholder="Email or Gmail >:3"></div>
+            <div>
+                <label for="password-input">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M240-640h360v-80q0-50-35-85t-85-35q-50 0-85 35t-35 85h-80q0-83 58.5-141.5T480-920q83 0 141.5 58.5T680-720v80h40q33 0 56.5 23.5T800-560v400q0 33-23.5 56.5T720-80H240q-33 0-56.5-23.5T160-160v-400q0-33 23.5-56.5T240-640Zm0 480h480v-400H240v400Zm240-120q33 0 56.5-23.5T560-360q0-33-23.5-56.5T480-440q-33 0-56.5 23.5T400-360q0 33 23.5 56.5T480-280ZM240-160v-400 400Z"/></svg>
+                </label>
+                <input type="password" name="password" id="password-input" placeholder="Password"></div>
+                <button type="submit">Log In</button>
+            </form>
+            <p>New around these parts? <a href="register.html">Register here </a></p>
+        </div>
+
+
+    <footer>
+    <span>Todos los derechos reservados al Colegio CTP Aserri</span>
+    <div class="footerdiv">
+        <div class="footerdiv1">
+            <img src="/frontend/images/Beast.jpg" alt="" style="border-radius: 25px; width: 200px; height: 200px;">
+        </div>
+        <div class="footerdiv2">
+            <h3 class="headline footer">Servicio al CLiente</h3>
+            <ul class="footer-links">
+                <li><a href="#"></a>Metodos de Pago</li>
+                <li><a href="#">Entregas y devoluciones</a></li>
+                <li><a href="#"></a>Politicas de Cookies</li>
+                <li><a href="#"></a>Politicas de Privacidad</li>
+                <li><a href="#"></a>Terminos y Condiciones</li>
+                <li><a href="#"></a>Quejas</li>
+                <p>recuerden que los links nunca fueron parete del contrato los puse para que se vea "Eastethic"</p>
+            </ul>
+        </div>
+        <div class="footerdiv2">
+            <h3 class="headline footer">Contactenos</h3>
+            <ul>
+                <li><i class="fa fa-phone" aria-hidden="true"></i><a href="tel:2230-5200"  class="ng-binding">2230-5222</a></li>
+                <li><i class="fa fa-envelope" aria-hidden="true"></i>
+                    <a class="ng-binding" href="mailto:superaserri@superaserri.com">Habilidades Blandas</a>
+                    <a href=""></a>
+                </li>
+                <li><a href="/Actividades blandas/frontend/html/contactos.html"><i class="fa fa-comment"></i>Contactenos</a></li>
+                <li><a href="/Actividades blandas/contrato legal.pdf">Contrato completo</a></li>
+            </ul>
+        </div>
+    </div>
+</footer>
+    </main>
+    <script src="/frontend/js/login.js"></script>
+</body>
+</html>

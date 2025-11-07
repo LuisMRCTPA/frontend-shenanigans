@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="/frontend/css/styles.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="navdiv">
+        <img src="/frontend/images/logo.jpg" alt="logo" id="logo">
+        <div class="logo"><a href="#">Habilidades Blandas</a></div>
+            <div class="menu">
+            <ul>
+                <li> <a href="Index.html">HOME</a></li>
+                <button><a href="/frontend/html/login.html">Login</a></button>
+                <button><a href="/frontend/html/registro.html">Register</a></button>
+                <button><a href="/frontend/html/Encuesta.html">Encuesta</a></button>
+            </ul>
+            </div>
+    <div class="search"> <!--required is to set something to be well demanded from someone and disabled allows to disable text or even buttons in order to redirect users-->
+    <input class="srch" type="search" name="" placeholder="Type to text">
+    <a href="#"><button class="btn">Search</button></a>
+    </div>
+    </nav>
+
+      <main class="survey-container">
+        <h1>Evaluación de Habilidades Blandas</h1>
+        <p>Responde a las siguientes 20 preguntas seleccionando la opción que mejor describe tu comportamiento o actitud. La puntuación máxima es de 20 puntos.</p>
+
+        {% if result %}
+        <div class="result-box {{ result.level | lower }}" id="lastResultBox">
+            <h2>Última Evaluación ({{ result.date }})</h2>
+            <p style="font-size: 1.2em;"><strong>Puntuación:</strong> {{ result.score }} de 20 puntos.</p>
+            <p style="font-size: 1.5em; font-weight: bold;">Nivel de Desarrollo: {{ result.level }}</p>
+            <button id="startNewSurveyBtn" style="background-color: green;">Realizar una Nueva Encuesta</button>
+        </div>
+        {% else %}
+        <div class="result-box" id="noResultBox">
+            <h2>Bienvenido/a</h2>
+            <p>Aún no has realizado ninguna encuesta. Haz clic para empezar tu evaluación.</p>
+            <button id="startNewSurveyBtn">Realizar mi Primera Encuesta</button>
+        </div>
+        {% endif %}
+
+        <form id="surveyForm" class="{% if result %}hidden{% endif %}" onsubmit="submitSurvey(event)">
+            <h2>Cuestionario (20 Preguntas)</h2>
+
+            <div class="question-group">
+                <p><strong>1. Al enfrentarme a una nueva herramienta o tecnología, mi reacción principal es:</strong></p>
+                <div class="options">
+                    <label><input type="radio" name="q1" value="0" required> A. Busco activamente tutoriales o cursos para dominarla.</label>
+                    <label><input type="radio" name="q1" value="1"> B. La uso superficialmente, solo si es estrictamente necesario.</label>
+                    <label><input type="radio" name="q1" value="2"> C. Pido ayuda a un colega antes de intentar aprender por mi cuenta.</label>
+                    <label><input type="radio" name="q1" value="3"> D. Espero a que alguien más me explique cómo funciona.</label>
+                </div>
+            </div>
+            
+            <div class="question-group">
+                <p><strong>2. Cuando un proyecto falla a pesar de mi esfuerzo, ¿cómo lo abordo?</strong></p>
+                <div class="options">
+                    <label><input type="radio" name="q2" value="0" required> A. Lo veo como un fracaso personal que afecta mi motivación.</label>
+                    <label><input type="radio" name="q2" value="1"> B. Analizo los errores rápidamente para aplicar las lecciones aprendidas.</label>
+                    <label><input type="radio" name="q2" value="2"> C. Intento culpar a factores externos para mantener mi moral.</label>
+                    <label><input type="radio" name="q2" value="3"> D. Me tomo un largo tiempo para recuperarme emocionalmente del revés.</label>
+                </div>
+            </div>
+            
+            <div class="question-group">
+                <p><strong>3. Para resolver un problema complejo en el trabajo, yo tiendo a:</strong></p>
+                <div class="options">
+                    <label><input type="radio" name="q3" value="0" required> A. Replicar la solución que funcionó la última vez.</label>
+                    <label><input type="radio" name="q3" value="1"> B. Consultar a la mayoría para seguir el consenso.</label>
+                    <label><input type="radio" name="q3" value="2" checked> C. Proponer soluciones radicalmente diferentes y probar una nueva metodología.</label>
+                    <label><input type="radio" name="q3" value="3"> D. Limitarme a las instrucciones establecidas sin desviaciones.</label>
+                </div>
+            </div>
+            
+            <div class="question-group">
+                <p><strong>4. ¿Cómo manejas un periodo de baja actividad en tu trabajo?</strong></p>
+                <div class="options">
+                    <label><input type="radio" name="q4" value="0" required> A. Aprovecho para relajarme y esperar la próxima asignación.</label>
+                    <label><input type="radio" name="q4" value="1"> B. Pregunto a mi supervisor si hay tareas pendientes.</label>
+                    <label><input type="radio" name="q4" value="2"> C. Me enfoco en optimizar procesos internos o anticipar necesidades futuras.</label>
+                    <label><input type="radio" name="q4" value="3"> D. Leo o hago actividades personales mientras pasa el tiempo.</label>
+                </div>
+            </div>
+
+            <div class="question-group">
+                <p><strong>5. Cuando tienes múltiples plazos apretados, ¿qué haces primero?</strong></p>
+                <div class="options">
+                    <label><input type="radio" name="q5" value="0" required> A. Creo una lista priorizada basada en urgencia e importancia.</label>
+                    <label><input type="radio" name="q5" value="1"> B. Trabajo en el que me parece más fácil para quitarlo del camino.</label>
+                    <label><input type="radio" name="q5" value="2"> C. Trabajo en el orden en que fueron asignados.</label>
+                    <label><input type="radio" name="q5" value="3"> D. Simplemente empiezo por el que tengo a mano y veo qué pasa.</label>
+                </div>
+            </div>
+            
+            <div class="question-group">
+                <p><strong>6. Un compañero de trabajo se muestra visiblemente estresado, usted:</strong></p>
+                <div class="options">
+                    <label><input type="radio" name="q6" value="0" required> A. Evito molestarle, asumiendo que quiere estar solo.</label>
+                    <label><input type="radio" name="q6" value="1"> B. Le ofrezco una palabra de ánimo general sin indagar más.</label>
+                    <label><input type="radio" name="q6" value="2"> C. Le pregunto si puedo ayudar en algo específico de su carga de trabajo.</label>
+                    <label><input type="radio" name="q6" value="3"> D. Asumo que es un problema personal y lo ignoro.</label>
+                </div>
+            </div>
+            
+            <div class="question-group">
+                <p><strong>7. ¿Cuál es tu enfoque cuando un miembro del equipo comete un error?</strong></p>
+                <div class="options">
+                    <label><input type="radio" name="q7" value="0" required> A. Señalo el error inmediatamente para que no se repita.</label>
+                    <label><input type="radio" name="q7" value="1"> B. Asumo la responsabilidad yo mismo para proteger al equipo.</label>
+                    <label><input type="radio" name="q7" value="2"> C. Utilizo el error como una oportunidad para entrenar y desarrollar a la persona.</label>
+                    <label><input type="radio" name="q7" value="3"> D. Dejo que el miembro del equipo se dé cuenta y se corrija solo.</label>
+                </div>
+            </div>
+
+            <div class="question-group">
+                <p><strong>8. En una reunión donde hay desacuerdo, usted:</strong></p>
+                <div class="options">
+                    <label><input type="radio" name="q8" value="0" required> A. Permanezco en silencio hasta que se calme la situación.</label>
+                    <label><input type="radio" name="q8" value="1"> B. Expreso mi opinión en voz alta para que sea escuchada.</label>
+                    <label><input type="radio" name="q8" value="2"> C. Intento mediar, asegurándome de que todas las partes sean escuchadas y entendidas.</label>
+                    <label><input type="radio" name="q8" value="3"> D. Me pongo del lado de la persona con mayor autoridad.</label>
+                </div>
+            </div>
+            
+            <div class="question-group">
+                <p><strong>9. ¿Con qué frecuencia buscas retroalimentación sobre tu desempeño?</strong></p>
+                <div class="options">
+                    <label><input type="radio" name="q9" value="0" required> A. De forma periódica y proactiva, incluso si no es obligatoria.</label>
+                    <label><input type="radio" name="q9" value="1"> B. Solo cuando mi supervisor lo solicita en la evaluación anual.</label>
+                    <label><input type="radio" name="q9" value="2"> C. Raramente, ya que creo que estoy haciendo un buen trabajo.</label>
+                    <label><input type="radio" name="q9" value="3"> D. Nunca, a menos que haya un problema evidente.</label>
+                </div>
+            </div>
+            
+            <div class="question-group">
+                <p><strong>10. Si el entorno laboral cambia radicalmente (ej. nueva estructura), usted:</strong></p>
+                <div class="options">
+                    <label><input type="radio" name="q10" value="0" required> A. Me siento desorientado y resisto los nuevos procedimientos.</label>
+                    <label><input type="radio" name="q10" value="1"> B. Adapto mi rutina y busco el lado positivo del cambio.</label>
+                    <label><input type="radio" name="q10" value="2"> C. Simplemente espero a que los cambios se reviertan o estabilicen solos.</label>
+                    <label><input type="radio" name="q10" value="3"> D. Me quejo con mis compañeros sobre la inestabilidad.</label>
+                </div>
+            </div>
+            
+            <div class="question-group">
+                <p><strong>11. ¿Cuál es tu papel en las sesiones de 'lluvia de ideas' (brainstorming)?</strong></p>
+                <div class="options">
+                    <label><input type="radio" name="q11" value="0" required> A. Contribuyo con ideas poco convencionales para desafiar el status quo.</label>
+                    <label><input type="radio" name="q11" value="1"> B. Solo ofrezco ideas si estoy 100% seguro de que funcionarán.</label>
+                    <label><input type="radio" name="q11" value="2"> C. Prefiero escuchar las ideas de otros y luego apoyar una.</label>
+                    <label><input type="radio" name="q11" value="3"> D. Me limito a tomar notas y no participar activamente.</label>
+                </div>
+            </div>
+            
+            <div class="question-group">
+                <p><strong>12. Si identificas un problema potencial antes de que afecte al equipo:</strong></p>
+                <div class="options">
+                    <label><input type="radio" name="q12" value="0" required> A. Informo al líder, pero no sugiero soluciones.</label>
+                    <label><input type="radio" name="q12" value="1"> B. Lo ignoro, ya que no es mi responsabilidad directa.</label>
+                    <label><input type="radio" name="q12" value="2"> C. Evalúo la situación, propongo soluciones y empiezo a mitigarlo de inmediato.</label>
+                    <label><input type="radio" name="q12" value="3"> D. Espero a que se convierta en un problema real para actuar.</label>
+                </div>
+            </div>
+            
+            <div class="question-group">
+                <p><strong>13. ¿Cómo manejas las interrupciones durante una tarea concentrada?</strong></p>
+                <div class="options">
+                    <label><input type="radio" name="q13" value="0" required> A. Detengo mi trabajo para atender la interrupción de inmediato.</label>
+                    <label><input type="radio" name="q13" value="1"> B. Uso herramientas (ej. audífonos, señales) para reducir interrupciones y agrupo respuestas para más tarde.</label>
+                    <label><input type="radio" name="q13" value="2"> C. Me frustro, pero atiendo la interrupción sin planificar.</label>
+                    <label><input type="radio" name="q13" value="3"> D. Simplemente dejo de hacer lo que estaba haciendo hasta que me quede tiempo.</label>
+                </div>
+            </div>
+            
+            <div class="question-group">
+                <p><strong>14. En una conversación difícil, ¿qué haces para asegurar que el otro se sienta escuchado?</strong></p>
+                <div class="options">
+                    <label><input type="radio" name="q14" value="0" required> A. Preparo mi respuesta mientras la otra persona habla.</label>
+                    <label><input type="radio" name="q14" value="1"> B. Interrumpo para aclarar puntos y acelerar la solución.</label>
+                    <label><input type="radio" name="q14" value="2"> C. Resumo lo que han dicho para confirmar mi entendimiento (escucha activa).</label>
+                    <label><input type="radio" name="q14" value="3"> D. Asumo que sé lo que van a decir y voy directo al grano.</label>
+                </div>
+            </div>
+            
+            <div class="question-group">
+                <p><strong>15. Un colega no está motivado para un proyecto. Su acción es:</strong></p>
+                <div class="options">
+                    <label><input type="radio" name="q15" value="0" required> A. Le asigno una tarea de menor importancia para evitar el problema.</label>
+                    <label><input type="radio" name="q15" value="1"> B. Lo ignoro, esperando que su motivación vuelva sola.</label>
+                    <label><input type="radio" name="q15" value="2"> C. Busco entender las causas de su desmotivación y lo re-alineo con el propósito del proyecto.</label>
+                    <label><input type="radio" name="q15" value="3"> D. Lo reporto inmediatamente a mi supervisor.</label>
+                </div>
+            </div>
+            
+            <div class="question-group">
+                <p><strong>16. Antes de enviar un email importante a un gran grupo, usted:</strong></p>
+                <div class="options">
+                    <label><input type="radio" name="q16" value="0" required> A. Lo escribo rápidamente y lo envío.</label>
+                    <label><input type="radio" name="q16" value="1"> B. Me aseguro de que esté libre de errores ortográficos.</label>
+                    <label><input type="radio" name="q16" value="2"> C. Reviso el tono, la estructura y el público objetivo para asegurar claridad.</label>
+                    <label><input type="radio" name="q16" value="3"> D. Se lo envío primero a un compañero para que lo revise.</label>
+                </div>
+            </div>
+            
+            <div class="question-group">
+                <p><strong>17. ¿Cómo te mantienes al día con las tendencias de tu sector profesional?</strong></p>
+                <div class="options">
+                    <label><input type="radio" name="q17" value="0" required> A. Dedico tiempo semanalmente a leer artículos, podcasts o asistir a webinars.</label>
+                    <label><input type="radio" name="q17" value="1"> B. Espero a que las tendencias lleguen a las noticias principales.</label>
+                    <label><input type="radio" name="q17" value="2"> C. Solo cuando un compañero me habla de algo nuevo.</label>
+                    <label><input type="radio" name="q17" value="3"> D. No dedico tiempo extra a esto.</label>
+                </div>
+            </div>
+            
+            <div class="question-group">
+                <p><strong>18. Si un cliente está muy molesto y te confronta, usted:</strong></p>
+                <div class="options">
+                    <label><input type="radio" name="q18" value="0" required> A. Le explico rápidamente que su enojo no está justificado.</label>
+                    <label><input type="radio" name="q18" value="1"> B. Me defiendo y mantengo mi posición de forma firme.</label>
+                    <label><input type="radio" name="q18" value="2"> C. Escucho activamente su queja para validar su emoción antes de proponer una solución.</label>
+                    <label><input type="radio" name="q18" value="3"> D. Lo derivo a un compañero con más experiencia.</label>
+                </div>
+            </div>
+            
+            <div class="question-group">
+                <p><strong>19. ¿Cuándo es el momento adecuado para delegar una tarea?</strong></p>
+                <div class="options">
+                    <label><input type="radio" name="q19" value="0" required> A. La delego para enfocarme en tareas de mayor impacto y desarrollo para mí.</label>
+                    <label><input type="radio" name="q19" value="1"> B. Solo la delego si estoy completamente abrumado y sin tiempo.</label>
+                    <label><input type="radio" name="q19" value="2"> C. Nunca delego, prefiero hacer todo para asegurar la calidad.</label>
+                    <label><input type="radio" name="q19" value="3"> D. La delego a la persona más junior del equipo.</label>
+                </div>
+            </div>
+
+            <div class="question-group">
+                <p><strong>20. Al hacer una presentación, ¿cómo adapta su mensaje?</strong></p>
+                <div class="options">
+                    <label><input type="radio" name="q20" value="0" required> A. Uso el mismo nivel de detalle técnico para todas las audiencias.</label>
+                    <label><input type="radio" name="q20" value="1"> B. Solo me enfoco en los datos, dejando que el público saque sus conclusiones.</label>
+                    <label><input type="radio" name="q20" value="2"> C. Me aseguro de que el lenguaje y el nivel de detalle se ajusten a los conocimientos de mi audiencia.</label>
+                    <label><input type="radio" name="q20" value="3"> D. Uso mucho jerga especializada para mostrar experiencia.</label>
+                </div>
+            </div>
+
+            <button type="submit">Finalizar Encuesta y Obtener Resultado</button>
+        </form>
+        
+        <div id="surveyMessage" style="margin-top: 20px; text-align: center; font-weight: bold;"></div>
+    </main>
+
+    <script src="/frontend/js/funciones.js"></script>
+
+
+       <footer>
+    <span>Todos los derechos reservados al Colegio CTP Aserri</span>
+    <div class="footerdiv">
+        <div class="footerdiv1">
+            <img src="/frontend/images/Beast.jpg" alt="" style="border-radius: 25px; width: 200px; height: 200px;">
+        </div>
+        <div class="footerdiv2">
+            <h3 class="headline footer">Servicio al CLiente</h3>
+            <ul class="footer-links">
+                <li><a href="#"></a>Metodos de Pago</li>
+                <li><a href="#">Entregas y devoluciones</a></li>
+                <li><a href="#"></a>Politicas de Cookies</li>
+                <li><a href="#"></a>Politicas de Privacidad</li>
+                <li><a href="#"></a>Terminos y Condiciones</li>
+                <li><a href="#"></a>Quejas</li>
+                <p>recuerden que los links nunca fueron parete del contrato los puse para que se vea "Eastethic"</p>
+            </ul>
+        </div>
+        <div class="footerdiv2">
+            <h3 class="headline footer">Contactenos</h3>
+            <ul>
+                <li><i class="fa fa-phone" aria-hidden="true"></i><a href="tel:2230-5200"  class="ng-binding">2230-5222</a></li>
+                <li><i class="fa fa-envelope" aria-hidden="true"></i>
+                    <a class="ng-binding" href="mailto:superaserri@superaserri.com">Habilidades Blandas</a>
+                    <a href=""></a>
+                </li>
+                <li><a href="/Actividades blandas/frontend/html/contactos.html"><i class="fa fa-comment"></i>Contactenos</a></li>
+                <li><a href="/Actividades blandas/contrato legal.pdf">Contrato completo</a></li>
+            </ul>
+        </div>
+    </div>
+</footer>
+    </main>
+</body>
+</html>
